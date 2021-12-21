@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello World</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react-dom.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/babel-core/5.6.15/browser.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <img class="rc-img" src="images/react.svg" alt="react logo">
+            <h1>Hello World</h1>
+        </div>
+    </header>
+    <div class="container" id="content"></div>
+
+    <script type="text/babel">
+
+    var HelloWorld = React.createClass({
+        getInitialState: function() {
+            return {
+                displayedName: ''
+            };
+        },
+
+        handleNameChange: function(event) {
+            var displayedName = event.target.value;
+        this.setState({
+         displayedName: displayedName
+        });
+        },
+        render: function() {
+            return (
+                <div className="section-main">
+                    <input type="text" className="search-field" onChange={this.handleNameChange} />
+                     <p>Hello, {this.state.displayedName === '' ? 'stranger' : this.state.displayedName}!</p>
+                </div>
+                );
+        }
+    });
+
+    ReactDOM.render(
+        <HelloWorld />,
+        document.getElementById("content")
+    );
+    </script>
+</body>
+</html>
